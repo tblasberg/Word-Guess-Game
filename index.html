@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- CSS BOOTSTRAP -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- CSS SHEET -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- JAVASCRIPT SHEET -->
+    <title>Word Game Guess!</title>
+</head>
+<body>
+    <!-- BIG CONTAINER -->
+    <div class="container"> 
+        <!-- TITLE BLOCK -->
+        <div class="row">
+            <img src="./assets/images/Title.jpg" alt="Guess the writer" width=100% height=180px >
+        </div>
+        <br>
+        <!-- /TITLE BLOCK -->
+        <!-- CONTENT BLOCK -->
+        <div class="row">
+            <!-- BLANK COLUMN LEFT-->
+            <div class="col-lg-1">
+            </div>
+            <!-- /BLANK COLUMN LEFT -->
+            <!-- CENTERED CONTENT BLOCK -->
+            <div class="col-lg-10">   
+                <!-- WORD TO GUESS -->
+                <div class="row underscores">
+                    _ _ _ _  <!-- word from array goes here  -->  
+                </div> 
+                <!-- /WORD TO GUESS -->
+                <!-- USER INPUT  -->
+                <div class="row">
+                    <br>
+                    <br>
+                    <form class="user_guess">
+                        What's your guess? <br>
+                        <input type="text" name="userguess"><br>
+                    </form><!-- I can use a text field  -->
+                </div>
+                <!-- /USER INPUT -->
+                <!-- GUESSED LETTERS -->
+                <div class="row">
+                    <!-- guessed letters are displayed on a row -->
+                </div>
+                <!-- /GUESSED LETTERS -->
+                <!-- BLANK ROW -->
+                <div class="row">
+                </div>
+                <!-- /BLANK ROW -->
+            </div>
+            <!-- /CENTERED CONTENT BLOCK -->
+        </div>
+        <!-- /CONTENT BLOCK -->
+    </div>
+    <!-- /BIG CONTAINER -->
+
+
+<!-- JAVASCRIPT SHEET -->
+<script src="./assets/javascript/game.js"></script>
+</body>
+</html>

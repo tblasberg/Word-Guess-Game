@@ -1,0 +1,13 @@
+.underscores {
+    font-size: 100px;
+    color: beige;
+}
+
+.userguess {
+    border: 1px purple solid;
+}
+
+body{
+    background-color: black;
+    color: whitesmoke;
+}
