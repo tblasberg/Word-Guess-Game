@@ -11,3 +11,7 @@ body{
     background-color: black;
     color: whitesmoke;
 }
+
+#sidenote{
+    font-size: 10px;
+}
