@@ -1,6 +1,8 @@
 
 //secret array
-var authors = ["agatha", "stephen", "monteiro", "clarice", "lewis"];
+var authors = ["agatha christie", "stephen king", "monteiro lobato", "clarice lispector", "lewis carroll"];
+//this is the array for underscores
+var underscores = [];
 //this is the right guesses array
 var rightGuesses = []; 
 //an array to store the user's wrong guesses
@@ -14,6 +16,9 @@ var secretWord="";
 //Game Score
 var numTries = 10;
 var numGuesses = 0;
+//variable to start the game
+var gameReady = false;
+
 
 
 //QUESTIONS:
@@ -33,8 +38,11 @@ function startGame()
     wrongGuesses=[];
     //restart point score
     numGuesses=0;
+    // gameReady = true;  add a button on html and define a function
+
     secretWord = authors[Math.floor(Math.random() * authors.length)];
     createSecretArray(secretWord);
+    getUserInput(guesses);
 }
 //-------------------------------------------------------------
 //Choose randomly one author from the array
@@ -42,17 +50,23 @@ function startGame()
 //create a fx takes in a secret word and converts to blank
 function createSecretArray(author)
 {
-    rightGuesses=[];
+    underscores=[];
     
     console.log("secret word " +author)
-    for(var x=0; x<author.length;x++)
+    for(var i=0; i<author.length;i++)
     {
-        rightGuesses.push("_")
+        if(secretWord[i] === " "){
+            underscores.push(" ");
+        }
+        else{ 
+            underscores.push("_");
+        }
     }
     //remember to remove the commas so you just get blanks
-    //console.log(rightGuesses);
-    document.querySelector(".underscores").innerHTML = rightGuesses;
-    return rightGuesses;
+    //console.log(underscores);
+    document.querySelector(".underscores").innerHTML = underscores.join("");
+
+    return underscores;
 
 
 }
@@ -61,46 +75,51 @@ function createSecretArray(author)
 //-------------------------------------------------------------
 //Capture input from user 
 // const input = document.querySelector("input");
+var userInput; 
 
-document.onkeyup = function(event)
-{ 
-    userInput = event.key;
-    console.log("onkey fx userinput: "+userInput);
-
-    //if stmt saying if we are at the end of the game, do everything to restart,
-    //check numGuesses<numTries
-    //call the startGame() fx 
-    if(numTries > 10){
-        startGame(); 
-        console.log("Number of tries: "+numTries);
+function getUserInput(){
+    document.onkeyup = function(event)
+    { 
+        if(event.keyCode >= 65 && event.keyCode <=90){
+            userInput = event.key;    
+        
+        
+        console.log("onkey function userinput: " + userInput);
+        //if stmt saying if we are at the end of the game, do everything to restart,
+        //check numGuesses<numTries
+        //call the startGame() fx 
+        //else run the check fx
+            if(numGuesses >= 10){
+                alert("Game over!");
+                gameReady=false;
+            }
+            else { 
+                check(userInput,secretWord)
+                document.querySelector("#user_guess").innerHTML = "What is your guess? "+event.key;}
+            //    console.log("on key event for userinput into array called GUESSES: " + guesses);
+        }
     }
-    else{
-        check(userInput,secretWord)
-        document.querySelector("#user_guess").innerHTML = "What is your guess? "+event.key;
-    }
-    //else run the check fx
-     //console.log("on key event for userinput into array called GUESSES: "+guesses);
-    
 }
+
+
 
 //-------------------------------------------------------------
 // //Iterate over the author through a function and for loop
-//this is a fx called "check" and it passes in the usersinput to see if
-//if is it is a wrong guess or right guess.
+//this is a function called "check" and it passes in the userInput to see if it is a wrong guess or right guess.
 //if correct, add to the rightGuesses array
 //if wrong add to the wrongGuesses array
 function check(usersinput,secretWord)
 {
 
-    console.log("check fx guesses: "+usersinput + " secret word: "+secretWord);
-    console.log("going into the check fx")
+    console.log("check function guesses: " + usersinput + " secret word: "+secretWord);
+    console.log("going into the check function")
     //so here you have the user input and secret word, you need to run a loop to check if the 
     //userinput matches the secret word
     guesses.forEach(Element => 
     {
         if(guesses === author.charAt(usersinput))
         {
-            console.log("The letter "+ guesses + " is in the name!");
+            console.log("The letter " + guesses + " is in the name!");
             rightGuesses.push(guesses);
             //when it is right go ahead and display the most updated rightGuess array
         } 
