@@ -38,13 +38,29 @@ function startGame()
     wrongGuesses=[];
     //restart point score
     numGuesses=0;
-    // gameReady = true;  add a button on html and define a function
+    //change the var to true
+    gameReady = true; 
+    
+    // -!-!-!!-!-!!-!-!!-!-!!-!-!!-!-!!-!-!!-!-!!-!-! 
+    //CLICK ON THE BUTTON TO RUN THE FUNCTION startGame() AND CHANGE THE gameReady var TO TRUE - DIDN'T WORK
+
+    //ATTEMPT 1:
+    // gameReady = true;  //add a button on html and define a function
+    //ATTEMPT 2:
+    // var gameReady = document.getElementById("button");
+    // gameReady.addEventListener("click", modifyText, true);
+    //ATTEMPT 3: 
+    // document.button.elements[ "gameReady" ].value = "true"
+    // -!-!-!!-!-!!-!-!!-!-!!-!-!!-!-!!-!-!!-!-!!-!-!
+
+
 
     secretWord = authors[Math.floor(Math.random() * authors.length)];
     createSecretArray(secretWord);
     getUserInput(guesses);
     check(guesses,secretWord);
 }
+
 //-------------------------------------------------------------
 //Choose randomly one author from the array
 
@@ -108,6 +124,8 @@ function getUserInput(){
 //this is a function called "check" and it passes in the userInput to see if it is a wrong guess or right guess.
 //if correct, add to the rightGuesses array
 //if wrong add to the wrongGuesses array
+
+//THIS FUNCTION IS NOT COMPARING THE guesses ARRAY TO THE secretWord. CHECK THE IF
 function check(usersInput,secretWord)
 {
     console.log("This is a user's guess: " + usersInput + " and the secret word: "+secretWord);
@@ -127,8 +145,8 @@ function check(usersInput,secretWord)
         {
             console.log("Wrong guess!");
             wrongGuesses.push(guesses);
-            numGuesses++;
-            console.log("check fx: numGuesses "+numGuesses);
+            numGuesses++; // ISSUE HERE: EVERY GUESS IS BEING ADDED AS 2 TRIES
+            console.log("check fx: numGuesses "+numGuesses); 
         }
     });
     console.log("end of the check fx");
